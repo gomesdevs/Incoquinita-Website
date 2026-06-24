@@ -1,7 +1,4 @@
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
-import { FileText, ClipboardList, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +9,6 @@ export const metadata: Metadata = {
 
 const RESOURCES = [
   {
-    icon: FileText,
     title: "Checklist OWASP Top 10",
     description:
       "Checklist completo com os 10 principais riscos de segurança em aplicações web e como cada um pode ser identificado e mitigado.",
@@ -20,7 +16,6 @@ const RESOURCES = [
     status: "Disponível",
   },
   {
-    icon: ClipboardList,
     title: "Questionário de Scoping",
     description:
       "Template usado em nossos engagements para coletar informações necessárias ao planejamento de um pentest.",
@@ -28,7 +23,6 @@ const RESOURCES = [
     status: "Disponível",
   },
   {
-    icon: BookOpen,
     title: "Guia de Preparação para Pentest",
     description:
       "Tudo que sua empresa precisa preparar antes de um engagement de teste de intrusão — credenciais, escopo, contatos.",
@@ -54,29 +48,34 @@ export default function RecursosPage() {
 
       <Section className="pt-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {RESOURCES.map((r) => {
-              const Icon = r.icon;
-              return (
-                <Card key={r.title} className="flex flex-col">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <Badge variant={r.status === "Disponível" ? "success" : "warning"}>
-                        {r.status}
-                      </Badge>
-                    </div>
-                    <CardTitle className="mt-3">{r.title}</CardTitle>
-                  </CardHeader>
-                  <CardDescription className="flex-1">{r.description}</CardDescription>
-                  <div className="mt-4">
-                    <Badge variant="default">{r.type}</Badge>
+          <div className="space-y-0">
+            {RESOURCES.map((r) => (
+              <div
+                key={r.title}
+                className="flex items-start justify-between gap-8 border-b border-border py-8 first:border-t"
+              >
+                <div className="flex-1">
+                  <div className="flex items-baseline gap-4">
+                    <h3 className="font-display text-2xl font-normal text-text-primary">
+                      {r.title}
+                    </h3>
+                    <span className="text-xs text-text-muted">{r.type}</span>
                   </div>
-                </Card>
-              );
-            })}
+                  <p className="mt-3 ml-8 max-w-xl text-sm leading-relaxed text-text-muted">
+                    {r.description}
+                  </p>
+                </div>
+                <div className="mt-2 flex-shrink-0">
+                  <span
+                    className={`text-xs font-medium ${
+                      r.status === "Disponível" ? "text-success" : "text-warning"
+                    }`}
+                  >
+                    {r.status}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Section>

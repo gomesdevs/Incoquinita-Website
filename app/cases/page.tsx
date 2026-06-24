@@ -1,5 +1,3 @@
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { Section } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
@@ -63,7 +61,7 @@ export default function CasesPage() {
       <Section className="pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+            <h1 className="font-display text-4xl font-normal tracking-tight text-text-primary sm:text-5xl">
               Cases
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-text-muted">
@@ -75,58 +73,55 @@ export default function CasesPage() {
       </Section>
 
       <Section className="pt-0">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           {CASES.map((c) => (
-            <Card key={c.title} className="relative overflow-hidden">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent" />
-              <div className="pl-6">
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <Badge variant="accent">{c.sector}</Badge>
-                </div>
-                <h2 className="font-display text-xl font-bold text-text-primary">
+            <div key={c.title} className="border border-border p-8">
+              <div className="flex items-baseline gap-3 mb-6">
+                <span className="text-xs font-medium text-accent">{c.sector}</span>
+                <h2 className="font-display text-2xl font-normal text-text-primary">
                   {c.title}
                 </h2>
+              </div>
 
-                <div className="mt-6 grid gap-6 lg:grid-cols-2">
-                  <div>
-                    <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-accent">
-                      Desafio
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                      {c.challenge}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-accent">
-                      Abordagem
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                      {c.approach}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-accent">
-                    Resultado
+              <div className="grid gap-8 lg:grid-cols-2">
+                <div>
+                  <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
+                    Desafio
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                    {c.result}
+                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                    {c.challenge}
                   </p>
                 </div>
-
-                <div className="mt-6 grid grid-cols-3 gap-4 border-t border-border pt-6">
-                  {c.metrics.map((m) => (
-                    <div key={m.label}>
-                      <p className="font-display text-2xl font-bold text-accent">
-                        {m.value}
-                      </p>
-                      <p className="mt-1 text-xs text-text-muted">{m.label}</p>
-                    </div>
-                  ))}
+                <div>
+                  <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
+                    Abordagem
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                    {c.approach}
+                  </p>
                 </div>
               </div>
-            </Card>
+
+              <div className="mt-6">
+                <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
+                  Resultado
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {c.result}
+                </p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-3 gap-4 border-t border-border pt-6">
+                {c.metrics.map((m) => (
+                  <div key={m.label}>
+                    <p className="font-display text-2xl font-normal text-accent">
+                      {m.value}
+                    </p>
+                    <p className="mt-1 text-xs text-text-muted">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </Section>

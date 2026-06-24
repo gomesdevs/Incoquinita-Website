@@ -1,7 +1,5 @@
 import { METHODOLOGY_STEPS } from "@/lib/constants";
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
-import { Shield, FileSearch, MessageSquare, RefreshCw } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,8 +7,6 @@ export const metadata: Metadata = {
   description:
     "Como trabalhamos: scoping, execução, relatório, debrief e retest — um processo claro e transparente.",
 };
-
-const stepIcons = [FileSearch, Shield, FileSearch, MessageSquare, RefreshCw];
 
 const FRAMEWORKS = [
   {
@@ -37,7 +33,7 @@ export default function MetodologiaPage() {
       <Section className="pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+            <h1 className="font-display text-4xl font-normal tracking-tight text-text-primary sm:text-5xl">
               Nossa Metodologia
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-text-muted">
@@ -57,33 +53,27 @@ export default function MetodologiaPage() {
             </SectionDescription>
           </SectionHeader>
 
-          <div className="mt-16 space-y-8">
-            {METHODOLOGY_STEPS.map((step, i) => {
-              const Icon = stepIcons[i];
-              return (
-                <Card key={step.number} className="relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent" />
-                  <div className="flex items-start gap-6 pl-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span className="font-body text-xs font-medium text-accent">
-                          FASE {step.number}
-                        </span>
-                      </div>
-                      <h3 className="mt-1 font-display text-xl font-bold text-text-primary">
-                        {step.title}
-                      </h3>
-                      <p className="mt-2 text-text-muted leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
+          <div className="mt-16 space-y-0">
+            {METHODOLOGY_STEPS.map((step) => (
+              <div
+                key={step.number}
+                className="border-b border-border py-8 last:border-b-0"
+              >
+                <div className="flex items-start gap-6">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-bg-primary font-body text-xs font-medium text-text-muted">
+                    {step.number}
                   </div>
-                </Card>
-              );
-            })}
+                  <div>
+                    <h3 className="font-display text-xl font-normal text-text-primary">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-text-muted leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
@@ -98,12 +88,12 @@ export default function MetodologiaPage() {
           </SectionHeader>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {FRAMEWORKS.map((f) => (
-              <Card key={f.name}>
-                <CardHeader>
-                  <CardTitle>{f.name}</CardTitle>
-                </CardHeader>
-                <p className="text-sm text-text-muted">{f.description}</p>
-              </Card>
+              <div key={f.name} className="border border-border p-6">
+                <h3 className="font-body text-sm font-semibold text-text-primary">
+                  {f.name}
+                </h3>
+                <p className="mt-2 text-sm text-text-muted">{f.description}</p>
+              </div>
             ))}
           </div>
         </div>

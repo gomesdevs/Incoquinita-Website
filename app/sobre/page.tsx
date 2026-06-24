@@ -1,6 +1,3 @@
-import { Shield, Target, Eye, Lock } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
@@ -12,25 +9,21 @@ export const metadata: Metadata = {
 
 const VALUES = [
   {
-    icon: Shield,
     title: "Confidencialidade",
     description:
       "NDA padrão em todos os engagements. Dados criptografados e política rigorosa de handling de informações sensíveis.",
   },
   {
-    icon: Target,
     title: "Rigor Técnico",
     description:
       "Metodologia alinhada a padrões internacionais (OWASP, PTES, CIS). Cada teste é documentado e reproduzível.",
   },
   {
-    icon: Eye,
     title: "Transparência",
     description:
       "Processos claros, entregáveis acionáveis e comunicação constante durante todo o engagement.",
   },
   {
-    icon: Lock,
     title: "Ética",
     description:
       "Testes controlados, sem impacto desnecessário. Comunicação prévia de limites e janelas de teste.",
@@ -52,7 +45,7 @@ export default function SobrePage() {
       <Section className="pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+            <h1 className="font-display text-4xl font-normal tracking-tight text-text-primary sm:text-5xl">
               Sobre a Incoquinita
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-text-muted">
@@ -68,7 +61,7 @@ export default function SobrePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl font-bold text-text-primary">
+              <h2 className="font-display text-2xl font-normal text-text-primary">
                 Nossa Missão
               </h2>
               <p className="mt-4 text-text-muted leading-relaxed">
@@ -79,7 +72,7 @@ export default function SobrePage() {
               </p>
             </div>
             <div>
-              <h2 className="font-display text-2xl font-bold text-text-primary">
+              <h2 className="font-display text-2xl font-normal text-text-primary">
                 Nossa Abordagem
               </h2>
               <p className="mt-4 text-text-muted leading-relaxed">
@@ -101,21 +94,15 @@ export default function SobrePage() {
               Princípios que guiam cada decisão e cada engagement.
             </SectionDescription>
           </SectionHeader>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((v) => {
-              const Icon = v.icon;
-              return (
-                <Card key={v.title}>
-                  <CardHeader>
-                    <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <CardTitle>{v.title}</CardTitle>
-                  </CardHeader>
-                  <p className="text-sm text-text-muted">{v.description}</p>
-                </Card>
-              );
-            })}
+          <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {VALUES.map((v) => (
+              <div key={v.title}>
+                <h3 className="font-display text-xl font-normal text-text-primary">
+                  {v.title}
+                </h3>
+                <p className="mt-3 text-sm text-text-muted">{v.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
@@ -128,11 +115,11 @@ export default function SobrePage() {
               Nossos testes seguem metodologias reconhecidas internacionalmente.
             </SectionDescription>
           </SectionHeader>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {CERTIFICATIONS.map((c) => (
-              <Badge key={c} variant="accent" className="px-5 py-2 text-sm">
+              <span key={c} className="text-sm font-medium text-text-muted">
                 {c}
-              </Badge>
+              </span>
             ))}
           </div>
         </div>

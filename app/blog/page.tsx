@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
@@ -57,20 +55,30 @@ export default function BlogPage() {
 
       <Section className="pt-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-0">
             {POSTS.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <Card className="group h-full">
-                  <CardHeader>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="accent">{post.category}</Badge>
-                      <span className="text-xs text-text-muted">{post.readTime}</span>
-                    </div>
-                    <CardTitle className="mt-2">{post.title}</CardTitle>
-                  </CardHeader>
-                  <CardDescription>{post.description}</CardDescription>
-                  <p className="mt-4 text-xs text-text-muted">{post.date}</p>
-                </Card>
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex items-start justify-between gap-8 border-b border-border py-8 transition-colors first:border-t hover:border-accent/40"
+              >
+                <div className="flex-1">
+                  <div className="flex items-baseline gap-4">
+                    <span className="text-xs font-medium text-accent">
+                      {post.category}
+                    </span>
+                    <h3 className="font-display text-2xl font-normal text-text-primary transition-colors group-hover:text-accent">
+                      {post.title}
+                    </h3>
+                  </div>
+                  <p className="mt-3 ml-8 max-w-xl text-sm leading-relaxed text-text-muted">
+                    {post.description}
+                  </p>
+                  <div className="mt-3 ml-8 flex items-center gap-4 text-xs text-text-muted">
+                    <span>{post.date}</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>

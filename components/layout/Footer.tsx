@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield } from "lucide-react";
+
 import { NAV_LINKS, SITE } from "@/lib/constants";
 
 const LEGAL_LINKS = [
@@ -17,8 +17,8 @@ export function Footer() {
         <div className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                <Shield className="h-5 w-5" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 font-display text-lg font-bold text-accent">
+                ?
               </div>
               <span className="font-display text-lg font-bold tracking-tight text-text-primary">
                 {SITE.name}

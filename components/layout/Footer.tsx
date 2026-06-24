@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { NAV_LINKS, SERVICES, SITE } from "@/lib/constants";
 
 const LEGAL_LINKS = [
   { label: "Privacidade", href: "/privacidade" },
@@ -17,10 +17,7 @@ export function Footer() {
         <div className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 font-display text-lg font-bold text-accent">
-                ?
-              </div>
-              <span className="font-display text-lg font-bold tracking-tight text-text-primary">
+              <span className="font-display text-xl font-normal text-text-primary">
                 {SITE.name}
               </span>
             </Link>
@@ -30,7 +27,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold text-text-primary">
+            <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
               Navegação
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -38,7 +35,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-text-muted transition-colors hover:text-accent"
+                    className="text-sm text-text-muted transition-colors hover:text-text-primary"
                   >
                     {link.label}
                   </Link>
@@ -48,53 +45,43 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold text-text-primary">
+            <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
               Serviços
             </h3>
             <ul className="mt-4 space-y-2.5">
-              <li>
-                <Link href="/servicos/pentest-web" className="text-sm text-text-muted transition-colors hover:text-accent">
-                  Pentest Web
-                </Link>
-              </li>
-              <li>
-                <Link href="/servicos/pentest-rede" className="text-sm text-text-muted transition-colors hover:text-accent">
-                  Pentest Rede
-                </Link>
-              </li>
-              <li>
-                <Link href="/servicos/cloud-assessment" className="text-sm text-text-muted transition-colors hover:text-accent">
-                  Cloud Assessment
-                </Link>
-              </li>
-              <li>
-                <Link href="/servicos/wifi-security" className="text-sm text-text-muted transition-colors hover:text-accent">
-                  Wi-Fi Security
-                </Link>
-              </li>
+              {SERVICES.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={service.href}
+                    className="text-sm text-text-muted transition-colors hover:text-text-primary"
+                  >
+                    {service.shortTitle}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold text-text-primary">
+            <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
               Contato
             </h3>
             <ul className="mt-4 space-y-2.5">
               <li>
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="text-sm text-text-muted transition-colors hover:text-accent"
+                  className="text-sm text-text-muted transition-colors hover:text-text-primary"
                 >
                   {SITE.email}
                 </a>
               </li>
               <li>
-                <Link href="/contato" className="text-sm text-text-muted transition-colors hover:text-accent">
+                <Link href="/contato" className="text-sm text-text-muted transition-colors hover:text-text-primary">
                   Formulário de contato
                 </Link>
               </li>
               <li>
-                <Link href="/proposta" className="text-sm text-text-muted transition-colors hover:text-accent">
+                <Link href="/proposta" className="text-sm text-text-muted transition-colors hover:text-text-primary">
                   Solicitar proposta
                 </Link>
               </li>
@@ -111,7 +98,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs text-text-muted transition-colors hover:text-accent"
+                className="text-xs text-text-muted transition-colors hover:text-text-primary"
               >
                 {link.label}
               </Link>

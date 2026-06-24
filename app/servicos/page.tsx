@@ -1,14 +1,5 @@
 import Link from "next/link";
-import {
-  Globe,
-  Network,
-  Cloud,
-  Wifi,
-  Activity,
-  Users,
-  ArrowRight,
-} from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
+import { ArrowRight } from "lucide-react";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import { SERVICES } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -18,15 +9,6 @@ export const metadata: Metadata = {
   description:
     "Conheça nossos serviços de cibersegurança: pentest, cloud assessment, segurança wireless e mais.",
 };
-
-const iconMap = {
-  Globe,
-  Network,
-  Cloud,
-  Wifi,
-  Activity,
-  Users,
-} as const;
 
 export default function ServicosPage() {
   return (
@@ -45,27 +27,31 @@ export default function ServicosPage() {
 
       <Section className="pt-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => {
-              const Icon = iconMap[service.icon as keyof typeof iconMap];
-              return (
-                <Link key={service.slug} href={service.href}>
-                  <Card className="group h-full">
-                    <CardHeader>
-                      <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent/20">
-                        {Icon && <Icon className="h-5 w-5" />}
-                      </div>
-                      <CardTitle>{service.shortTitle}</CardTitle>
-                    </CardHeader>
-                    <CardDescription>{service.description}</CardDescription>
-                    <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors group-hover:gap-2">
-                      Ver detalhes
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </div>
-                  </Card>
-                </Link>
-              );
-            })}
+          <div className="space-y-0">
+            {SERVICES.map((service, i) => (
+              <Link
+                key={service.slug}
+                href={service.href}
+                className="group flex items-start justify-between gap-8 border-b border-border py-8 transition-colors first:border-t hover:border-accent/40"
+              >
+                <div className="flex-1">
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-body text-xs font-medium text-text-muted">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-display text-2xl font-normal text-text-primary transition-colors group-hover:text-accent sm:text-3xl">
+                      {service.shortTitle}
+                    </h3>
+                  </div>
+                  <p className="mt-3 ml-8 max-w-xl text-sm leading-relaxed text-text-muted">
+                    {service.description}
+                  </p>
+                </div>
+                <div className="mt-2 flex-shrink-0 text-text-muted transition-colors group-hover:text-accent">
+                  <ArrowRight className="h-5 w-5" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </Section>

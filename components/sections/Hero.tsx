@@ -1,10 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { QuestionMarkFallback } from "@/components/creative/QuestionMarkFallback";
 import { SITE } from "@/lib/constants";
+
+const QuestionMark3D = dynamic(
+  () =>
+    import("@/components/creative/QuestionMark3D").then((mod) => ({
+      default: mod.QuestionMark3D,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <QuestionMarkFallback size={200} animated className="opacity-20" />
+      </div>
+    ),
+  }
+);
 
 export function Hero() {
   const [revealed, setRevealed] = useState(false);
@@ -61,17 +77,15 @@ export function Hero() {
 
           {/* 3D Slot — right side, 50% */}
           <div
-            className={`hidden lg:flex items-center justify-center transition-all duration-1200 ease-out delay-500 ${
+            className={`hidden lg:block transition-all duration-1200 ease-out delay-500 ${
               revealed
                 ? "translate-y-0 opacity-100"
                 : "translate-y-12 opacity-0"
             }`}
           >
-            <QuestionMarkFallback
-              size={280}
-              animated
-              className="opacity-20"
-            />
+            <div className="aspect-square w-full max-w-[500px]">
+              <QuestionMark3D />
+            </div>
           </div>
         </div>
       </div>

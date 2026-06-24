@@ -36,7 +36,7 @@ const SectionTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingEl
     <h2
       ref={ref}
       className={cn(
-        "font-display text-3xl font-bold tracking-tight text-text-primary sm:text-4xl",
+        "font-display text-3xl font-normal tracking-tight text-text-primary sm:text-4xl",
         className
       )}
       {...props}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import { METHODOLOGY_STEPS } from "@/lib/constants";
@@ -27,7 +26,7 @@ export function MethodologyPreview() {
                 }`}
               >
                 <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 z-10">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-accent bg-background font-display text-sm font-bold text-accent">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background font-body text-xs font-medium text-text-muted">
                     {step.number}
                   </div>
                 </div>
@@ -37,7 +36,7 @@ export function MethodologyPreview() {
                     i % 2 === 0 ? "sm:pr-12 sm:text-right" : "sm:pl-12"
                   }`}
                 >
-                  <h3 className="font-display text-xl font-bold text-text-primary">
+                  <h3 className="font-display text-xl font-normal text-text-primary">
                     {step.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-text-muted">
@@ -55,7 +54,6 @@ export function MethodologyPreview() {
           <Link href="/metodologia">
             <Button variant="secondary">
               Ver Metodologia Completa
-              <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>

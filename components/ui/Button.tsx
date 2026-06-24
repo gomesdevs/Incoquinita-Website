@@ -12,13 +12,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-lg font-display font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+          "inline-flex items-center justify-center gap-2 rounded-lg font-body font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
           {
-            "bg-accent text-background hover:bg-accent-hover shadow-sm shadow-accent/20":
+            "bg-text-primary text-bg-primary hover:bg-text-primary/90":
               variant === "primary",
-            "border border-border bg-bg-secondary text-text-primary hover:border-accent hover:text-accent":
+            "border border-border text-text-primary hover:border-accent hover:text-accent":
               variant === "secondary",
-            "text-text-muted hover:bg-bg-tertiary hover:text-text-primary":
+            "text-text-muted hover:text-text-primary":
               variant === "ghost",
             "bg-danger/10 text-danger hover:bg-danger/20": variant === "danger",
           },

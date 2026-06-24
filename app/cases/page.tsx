@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

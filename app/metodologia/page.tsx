@@ -1,7 +1,7 @@
 import { METHODOLOGY_STEPS } from "@/lib/constants";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
-import { Shield, FileSearch, MessageSquare, RefreshCw, Lock } from "lucide-react";
+import { Shield, FileSearch, MessageSquare, RefreshCw } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

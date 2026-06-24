@@ -45,7 +45,6 @@ export default function PropostaPage() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    watch,
   } = useForm<ProposalFormData>({
     resolver: zodResolver(proposalSchema),
     defaultValues: {
@@ -54,8 +53,6 @@ export default function PropostaPage() {
       previousPentest: "nao",
     },
   });
-
-  const selectedServices = watch("services");
 
   const onSubmit = async (data: ProposalFormData) => {
     console.log("Proposal form:", data);

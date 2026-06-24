@@ -11,7 +11,6 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import { contactSchema, type ContactFormData } from "@/lib/validations";
 import { SERVICES, SITE } from "@/lib/constants";
-import type { Metadata } from "next";
 
 export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false);

@@ -3,7 +3,7 @@ import { Users, CheckCircle2, ArrowRight, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
+import { Section, SectionHeader, SectionTitle } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

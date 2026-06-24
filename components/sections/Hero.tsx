@@ -17,12 +17,10 @@ export function Hero() {
     if (!ctx) return;
 
     let animationId: number;
-    let width = 0;
-    let height = 0;
 
     const resize = () => {
-      width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     };
     resize();

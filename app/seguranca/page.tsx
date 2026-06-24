@@ -1,4 +1,4 @@
-import { Section, SectionHeader, SectionTitle } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Shield, Lock, Eye, FileCheck } from "lucide-react";
 import type { Metadata } from "next";

@@ -131,7 +131,7 @@ export function Hero() {
       />
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-sm font-medium uppercase tracking-widest text-accent">
+          <p className="font-body text-sm font-medium uppercase tracking-widest text-accent">
             Consultoria em Cibersegurança
           </p>
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight text-text-primary sm:text-5xl lg:text-6xl">

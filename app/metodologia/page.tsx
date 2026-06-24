@@ -69,7 +69,7 @@ export default function MetodologiaPage() {
                     </div>
                     <div>
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs font-medium text-accent">
+                        <span className="font-body text-xs font-medium text-accent">
                           FASE {step.number}
                         </span>
                       </div>

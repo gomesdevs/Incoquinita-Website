@@ -49,10 +49,11 @@ A Incoquinita transforma incógnitas (superfícies de ataque desconhecidas, vuln
 - Prova social: cases, certificações, setores atendidos
 
 ### Lovely — design premium
-- Dark mode como default, light mode opcional
-- Tipografia display + corpo legível, paleta sóbria com accent único
-- Motion com propósito (scroll reveal, hover, page transitions) — nunca decorativa demais
+- Identidade **proprietária**, não template cyber genérico (benchmark Awwwards em §6.1)
+- Paleta restrita (2–3 cores de marca) — dark **ou** light conforme posicionamento, não slate+ciano por default
+- Tipografia com personalidade editorial; motion ligada ao conceito (transições, reveal, scroll storytelling)
 - Acessibilidade WCAG AA, mobile impecável, estados de loading/erro cuidados
+- Usabilidade > espetáculo: sites premiados pontuam forte em clareza (30% do score Awwwards)
 
 ### Complete — cobertura total
 - Arquitetura de informação com páginas profundas por serviço
@@ -98,11 +99,11 @@ A Incoquinita transforma incógnitas (superfícies de ataque desconhecidas, vuln
    - Headline: proposta de valor concreta
    - Subheadline: serviços principais em uma linha
    - CTAs: "Solicitar proposta" (primário) + "Conheça nossos serviços" (secundário)
-   - Visual: animação sutil de "superfície de ataque" ou radar (estilizado, não gimmick)
+   - Visual: **metáfora de marca proprietária** (ex.: máscara/reveal, camadas, luz sobre o oculto) — ver §6.1 e §6.4; **não** radar/partículas/rede genérico
 
 2. **Serviços em destaque**
-   - 3–4 cards dos serviços mais vendidos
-   - Cada card: ícone custom, título, descrição de 2 linhas, link "Saiba mais"
+   - 3–4 ofertas principais com layout **editorial ou scroll cards** (NEVERHACK) — não grid clone de cards
+   - Cada item: ícone custom **ou** tipografia forte, título, descrição de 2 linhas, link "Saiba mais"
 
 3. **Por que Incoquinita**
    - 3–4 diferenciais (metodologia, entregáveis, retest incluso, confidencialidade)
@@ -255,45 +256,177 @@ Formulário estruturado para qualificar leads:
 
 ## 6. Identidade visual
 
-### Conceito
+> **Referência de mercado:** pesquisa Awwwards (jun/2025) em consultorias, assessment e empresas de cibersegurança — sites com SOTD, Honorable Mention ou Nominee no mesmo ramo da Incoquinita.
+
+### 6.1 Benchmark Awwwards — cibersegurança e consultoria
+
+#### Sites analisados
+
+| Site | Prêmio Awwwards | Perfil | O que fazem visualmente |
+|---|---|---|---|
+| [NEVERHACK](https://www.awwwards.com/sites/neverhack) | **SOTD** (Jun/2025) · 7.38 | Consultoria cyber enterprise | Paleta **2 cores** (#0E0E0E + #FFF); hero **3D/WebGL**; menu por use case; scroll cards; **page transitions**; glitch como interação de marca; timeline; mapa de escritórios |
+| [Orenda Security](https://www.awwwards.com/sites/orenda-security) | **SOTD** (Fev/2018) · 7.27 | **Assessment / pentest** (peer direto) | Paleta **3 cores** (#000, #9C9C9C, #FFF); **mask transition** como assinatura; imagens grandes; parallax; minimal/clean; GSAP + React (Locomotive) |
+| [CyberConvoy](https://www.awwwards.com/sites/cyberconvoy) | Honorable Mention (Fev/2024) | Cyber solutions | Roxo escuro (#090617 + #67649F), **não ciano**; intro de loading; stats carousel; **camadas de segurança** interativas; parallax blur; slider horizontal |
+| [Fidus Information Security](https://www.awwwards.com/sites/fidus-information-security) | Nominee (Set/2020) | **Consultoria de segurança** | UI corporativa limpa; foco em credibilidade B2B, não efeitos hacker |
+| [MOKN](https://www.awwwards.com/sites/mokn) | Nominee (Dez/2025) | Startup cyber | **Símbolo 3D proprietário** (isca/metáfora); storytelling do founder; site “business card”; GSAP |
+| [Dispel](https://www.awwwards.com/sites/dispel) | Nominee (Set/2025) | Cyber OT/infra | Animação de landing; **calculadora ROI** interativa; **ilustração custom**; 404 custom; clean + Framer |
+| [Netwrix](https://www.awwwards.com/sites/netwrix) | Nominee (Dez/2025) | Cyber enterprise (rebrand) | **Megamenu**; microinterações consistentes; hero + scroll animado; **resource center com filtros**; voz de marca unificada |
+| [SEQRYPTON](https://www.awwwards.com/sites/seqrypton) | Nominee (Nov/2025) | Cyber / crypto | Tipografia animada → logo; stacking cards; vídeo sticky no scroll; page load experience |
+| [Advenica](https://www.awwwards.com/sites/advenica-com) | Nominee (Nov/2025) | High-assurance cyber | Confiança via **conteúdo claro + UX intuitiva**; moderno sem theatrics |
+
+#### Padrões recorrentes nos premiados (aplicar)
+
+1. **Paleta enxuta (2–3 cores)** — NEVERHACK usa só preto e branco; Orenda usa cinza + preto + branco. Accent colorido é exceção, não regra.
+2. **Metáfora visual proprietária** — MOKN (isca 3D), Orenda (mask reveal), CyberConvoy (camadas). Não ícone de cadeado/rede genérica.
+3. **Motion com narrativa** — scroll cards, stacking reveals, transições de página, intro de carga. Animação **explica** o serviço ou reforça a marca.
+4. **Ferramentas interativas** — Dispel (ROI calculator), CyberConvoy (layers). Convertem e demonstram expertise melhor que cards estáticos.
+5. **Tipografia como identidade** — títulos grandes, animação tipográfica, marquees (SEQRYPTON, NEVERHACK). Fonte **não** pode ser o combo Space Grotesk + Inter default.
+6. **Prova visual real** — mapas, stats carousel, vídeo, fotografia/ilustração custom. Depoimentos **com** contexto visual (logo, setor, foto blur).
+7. **Navegação profunda** — megamenu ou menu por use case (NEVERHACK, Netwrix) para muitos serviços sem grid repetitivo.
+8. **Usabilidade pesada no score** — Awwwards: Design 40%, **Usability 30%**, Creativity 20%, Content 10%. Clareza e IA de informação importam tanto quanto efeito visual.
+
+#### O que os premiados evitam (e o protótipo atual repete)
+
+| Clichê genérico | O que sites Awwwards fazem em vez disso |
+|---|---|
+| Slate + ciano elétrico (#22d3ee) | Paleta monocromática ou accent único não-ciano (roxo, coral, off-white) |
+| Canvas radar / partículas / rede de nós | 3D/metáfora de marca, vídeo, ilustração, mask reveal |
+| Ícones Lucide em caixinha `accent/10` | Ícones custom, ilustração, ou tipografia forte sem ícone |
+| Cards idênticos em grid 3×N | Scroll storytelling, cards empilhados, slider horizontal |
+| Gradientes + blur orbs no CTA | Bordas tipográficas, contraste forte, ou bloco sólido de marca |
+| Logo placeholder “?” | Wordmark ou símbolo desenhado (mesmo provisório, mas intencional) |
+| Seções alternadas bg/bg-secondary | Ritmo editorial: full-bleed image, blocos assimétricos, whitespace generoso |
+| Dark mode “porque é cyber” | Dark **ou** light escolhido pelo posicionamento; consultorias de assessment premiadas usam ambos |
+
+#### Referências mais próximas da Incoquinita
+
+Por perfil (consultoria de assessment/pentest, PME/mid-market):
+
+1. **Orenda Security** — serviços de assessment; visual minimal; interação signature (mask)
+2. **Fidus Information Security** — consultoria pura; UI corporativa
+3. **NEVERHACK** — escala aspiracional; navegação por use case; motion premium
+4. **MOKN** — startup cyber; metáfora visual única + storytelling
+
+---
+
+### 6.2 Conceito (revisado)
+
 **Incógnita → Visibilidade → Segurança**
 
-Visual que evoca: mapas de rede, superfícies de ataque, scan/radar, grids técnicos — sem cair no clichê "hacker green on black".
+Metáforas visuais **proprietárias** a explorar na Fase 0 (escolher **uma** e executar com rigor):
 
-### Paleta sugerida (ajustar na Fase 0)
-
-| Token | Uso | Valor sugerido |
+| Direção | Referência Awwwards | Aplicação Incoquinita |
 |---|---|---|
-| `--bg-primary` | Fundo principal | `#0a0e17` |
-| `--bg-secondary` | Cards, seções | `#111827` |
-| `--text-primary` | Títulos, corpo | `#f1f5f9` |
-| `--text-muted` | Subtítulos, labels | `#94a3b8` |
-| `--accent` | CTAs, links, highlights | `#22d3ee` (ciano) ou `#a78bfa` (violeta) |
-| `--accent-hover` | Hover states | variante 10% mais clara |
-| `--success` | Métricas positivas | `#34d399` |
-| `--warning` | Alertas, vulns | `#fbbf24` |
-| `--danger` | Crítico | `#f87171` |
+| **Reveal / máscara** | Orenda (mask transition) | Incógnita sendo “iluminada” — áreas ocultas reveladas no scroll ou hover |
+| **Camadas** | CyberConvoy (security layers) | Superfícies de ataque em camadas empilhadas, interativas |
+| **Luz sobre o escuro** | NEVERHACK (3D hero) | Objeto 3D ou ilustração com feixe de luz — **não** radar 2D canvas |
+| **Objeto simbólico** | MOKN (3D bait) | Símbolo da incógnita (interrogação estilizada, lente, prisma) — desenhado, não emoji “?” |
 
-### Tipografia
+**Evitar:** mapas de rede genéricos, scan/radar canvas, partículas conectadas, matrix green, terminal falso, cadeados stock.
 
-| Uso | Fonte sugerida | Fallback |
+---
+
+### 6.3 Paleta (revisar na Fase 0 — benchmark-driven)
+
+Premiados usam **2–3 cores**. Proposta: definir paleta no brand book **antes** de implementar tokens.
+
+#### Opção A — Monocromática + accent quente (inspirada NEVERHACK / Orenda)
+
+| Token | Uso | Direção |
 |---|---|---|
-| Display / títulos | Syne, Clash Display, ou Space Grotesk | sans-serif |
-| Corpo | IBM Plex Sans, Geist, ou Inter | sans-serif |
-| Código / técnico | JetBrains Mono | monospace |
+| `--bg-primary` | Fundo | `#0E0E0E` ou off-black |
+| `--bg-secondary` | Cards, seções | `#1A1A1A` ou cinza neutro |
+| `--text-primary` | Títulos, corpo | `#FFFFFF` ou `#F5F5F0` (off-white) |
+| `--text-muted` | Subtítulos | `#9C9C9C` (Orenda) ou equivalente |
+| `--accent` | CTAs, highlights | **Uma** cor de marca — coral, âmbar, violeta profundo — **não** ciano Tailwind |
 
-### Componentes visuais
-- Ícones custom ou Lucide/Phosphor (consistente, não mix)
-- Ilustrações: abstratas/geométricas, não stock photos de cadeado
-- Cards com borda sutil + hover com glow leve no accent
-- Gradientes apenas em hero e CTAs — resto flat/sóbrio
+#### Opção B — Claro e confiável (tendência 2025–2026 para GRC/assessment)
 
-### Motion
-- Scroll reveal (fade + translateY) nas seções
-- Stagger nos cards de serviço
-- Page transitions suaves (View Transitions API ou Framer Motion)
-- Hero: animação de "scan" ou partículas discretas
-- Respeitar `prefers-reduced-motion`
+| Token | Uso | Direção |
+|---|---|---|
+| `--bg-primary` | Fundo | `#FAFAF8` ou branco quente |
+| `--text-primary` | Corpo | `#1A1A1A` |
+| `--accent` | CTAs | Cor saturada única (ex.: violeta, terracota) |
+
+#### Tokens funcionais (independente da opção)
+
+| Token | Uso |
+|---|---|
+| `--success` / `--warning` / `--danger` | Apenas métricas, severidade CVSS, estados de form — **não** decoração |
+
+> **Nota:** o protótipo atual (`#0a0e17` + `#22d3ee`) coincide com o template “AI cyber” identificado na auditoria visual. Substituir na Fase 0.
+
+---
+
+### 6.4 Tipografia (revisada)
+
+Evitar o trio **Space Grotesk + Inter + JetBrains Mono** — é o default de output generativo.
+
+| Uso | Direção (escolher par exclusivo na Fase 0) | Referência |
+|---|---|---|
+| Display / títulos | Fonte com carácter: **Instrument Serif**, **Fraunces**, **Söhne**/Helvetica Now, **Neue Montreal**, **PP Neue Corp** | NEVERHACK, SEQRYPTON usam tipografia como hero |
+| Corpo | Alta legibilidade: **IBM Plex Sans**, **Geist**, **Source Sans 3**, **Suisse Int'l** | Orenda, Fidus — corporativo limpo |
+| Código / técnico | Apenas em snippets reais (relatórios, CVE) — **não** como eyebrow decorativo no hero |
+
+Tratamentos tipográficos dos premiados a considerar:
+- Títulos **oversized** com tracking negativo
+- Animação de condensação/expansão no load (SEQRYPTON)
+- Marquee de credenciais/frameworks (NEVERHACK) — com moderação
+
+---
+
+### 6.5 Componentes visuais (revisados)
+
+| Elemento | Antes (protótipo) | Direção Awwwards |
+|---|---|---|
+| Ícones | Lucide em caixa `accent/10` | Ícones **custom** por serviço **ou** zero ícones — tipografia + cor basta |
+| Cards | Grid 3 colunas idênticos | Scroll cards, stacking, ou lista editorial assimétrica |
+| Ilustração | Abstrata genérica | Ilustração **commissioned** ou 3D de metáfora de marca (MOKN, Dispel) |
+| Prova social | Badges de setor + blockquote | Logos monocromáticos, stats carousel (CyberConvoy), vídeo depoimento |
+| CTAs | Gradiente + blur orbs | Bloco sólido de alto contraste ou borda tipográfica |
+| Navegação | Links horizontais flat | Megamenu por serviço **ou** menu por use case (NEVERHACK) |
+| Footer | Grid 4 colunas padrão | Mapa, stats, ou bloco editorial — diferenciar |
+
+Assets obrigatórios (Fase 0):
+- Logo/wordmark final (substituir “?”)
+- Favicon + OG images por página
+- 1 ilustração ou render 3D hero
+- Screenshots redigidos de entregáveis reais (relatório, debrief)
+
+---
+
+### 6.6 Motion e interação (revisados)
+
+Priorizar **poucas interações memoráveis** sobre micro-animações em tudo.
+
+| Interação | Prioridade | Referência |
+|---|---|---|
+| **Page transitions** (View Transitions API) | Alta | NEVERHACK, Orenda |
+| **Reveal no scroll** (máscara, clip-path, opacity) | Alta | Orenda, SEQRYPTON |
+| **Scroll storytelling** (cards empilhados, sticky) | Média | NEVERHACK, CyberConvoy |
+| **Intro de carga** (tipografia → logo) | Média | CyberConvoy, SEQRYPTON |
+| **Calculadora / quiz interativo** | Alta (conversão) | Dispel (ROI), §8 Opção A/B |
+| Canvas radar / partículas | **Remover** | Clichê — substituir por metáfora §6.2 |
+
+Stack motion sugerida:
+- **GSAP + ScrollTrigger** ou **Framer Motion** — usar onde há narrativa; não instalar e deixar ocioso
+- Respeitar `prefers-reduced-motion` (já no protótipo)
+
+---
+
+### 6.7 Anti-patterns — checklist visual pré-implementação
+
+Antes de mergear qualquer componente visual, validar:
+
+- [ ] Paleta tem ≤ 3 cores de marca (+ tokens funcionais)?
+- [ ] Hero usa metáfora proprietária, não canvas genérico?
+- [ ] Logo real, não placeholder?
+- [ ] Fonte display **não** é Space Grotesk/Inter combo default?
+- [ ] Ícones são custom ou ausentes — não grid Lucide repetido?
+- [ ] Motion tem propósito narrativo (≤ 3 momentos memoráveis por página)?
+- [ ] Existe pelo menos 1 asset visual real (foto, ilustração, screenshot)?
+- [ ] CTA não usa gradient + blur orbs?
+- [ ] Passaria no teste “screenshot ao lado de NEVERHACK/Orenda — parece do mesmo template?”
 
 ---
 
@@ -306,9 +439,9 @@ Visual que evoca: mapas de rede, superfícies de ataque, scan/radar, grids técn
 | Estilo | **Tailwind CSS 4** | Design system rápido, consistência |
 | Linguagem | **TypeScript** | Type safety, manutenibilidade |
 | Conteúdo | **MDX** (blog/recursos) | Markdown + componentes React |
-| Motion | **Framer Motion** | Animações declarativas |
+| Motion | **GSAP + ScrollTrigger** ou **Framer Motion** | Narrativa de scroll e page transitions (benchmark NEVERHACK/Orenda) — usar ou não instalar |
 | Formulários | **React Hook Form + Zod** | Validação robusta |
-| Ícones | **Lucide React** | Consistente, leve |
+| Ícones | **Custom SVG** por serviço; Lucide só em UI utilitária (menu, form) | Evitar grid de ícones genéricos (anti-pattern §6.7) |
 
 ### Alternativa mais leve
 - **Astro 5 + React islands** — se prioridade máxima for performance e conteúdo estático; React só onde precisa de interatividade.
@@ -350,6 +483,7 @@ Visual que evoca: mapas de rede, superfícies de ataque, scan/radar, grids técn
 - Inputs: nº de aplicações, IPs, ambientes cloud, autenticação
 - Output: faixa de esforço (dias) e complexidade
 - Disclaimer: estimativa, proposta formal após scoping
+- **Referência Awwwards:** [Dispel](https://www.awwwards.com/sites/dispel) (ROI Calculator) — ferramenta interativa como diferencial visual e de conversão
 
 ### Opção C — Checklist OWASP Top 10 interativo
 - 10 itens com explicação + " sua empresa cobre isso?"
@@ -418,9 +552,11 @@ incoquinita-website/
 ## 10. Roadmap de implementação
 
 ### Fase 0 — Fundação (1–2 semanas)
-- [ ] Definir brand book: logo final, paleta, tipografia, tom de voz
-- [ ] Wireframes de todas as páginas (Figma ou similar)
-- [ ] Design system: tokens, componentes base
+- [ ] **Benchmark review:** validar direção visual com §6.1–6.7 (Orenda, NEVERHACK, MOKN como north star)
+- [ ] Definir brand book: logo final, paleta **2–3 cores**, tipografia exclusiva, tom de voz
+- [ ] Escolher **uma** metáfora visual (§6.2) e produzir 1 asset hero (ilustração, 3D ou fotografia)
+- [ ] Wireframes de todas as páginas (Figma ou similar) — layout editorial, não grid de cards clone
+- [ ] Design system: tokens, componentes base, anti-patterns §6.7
 - [ ] Setup do projeto Next.js + Tailwind + TypeScript
 - [ ] Configurar CI/CD, domínio, deploy preview
 - [ ] Migrar/recuperar copy útil do site antigo (git history)
@@ -450,7 +586,8 @@ incoquinita-website/
 - [ ] Mais 2–3 artigos de blog
 
 ### Fase 4 — Polish ALC (1–2 semanas)
-- [ ] Motion refinada e page transitions
+- [ ] Motion refinada: page transitions + 1 interação signature (mask reveal ou scroll storytelling — §6.6)
+- [ ] **Refatorar hero:** remover canvas radar/partículas; implementar metáfora §6.2
 - [ ] Performance audit (Lighthouse 95+ em todas as páginas)
 - [ ] Testes de acessibilidade (axe, teclado, screen reader)
 - [ ] Security audit do site (headers, deps, form)
@@ -470,9 +607,11 @@ incoquinita-website/
 
 ### Design
 - [ ] Mobile impecável (320px → 1440px+)
-- [ ] Dark e light mode funcionais
+- [ ] Dark e/ou light mode funcionais (escolha intencional de §6.3, não default genérico)
 - [ ] Favicon, OG images, apple-touch-icon
 - [ ] Consistência visual em todas as páginas
+- [ ] Anti-patterns §6.7 validados (sem slate+ciano, sem canvas genérico, sem logo “?”)
+- [ ] ≥ 1 asset visual proprietário (ilustração, 3D, foto ou screenshot de entregável)
 
 ### Técnico
 - [ ] Lighthouse Performance > 90
@@ -501,7 +640,7 @@ Do commit `e4340e8` (site estático original), recuperar e reescrever:
 | Texto técnico de habilidades (OWASP, IDS/IPS, cloud) | Reescrever em tom empresa para `/sobre` e `/metodologia` |
 | Dark mode toggle | Reimplementar no design system |
 | WhatsApp + LinkedIn | Manter como canais em `/contato` |
-| Ícones de serviços (PNG) | Substituir por ícones custom ou Lucide |
+| Ícones de serviços (PNG) | Substituir por ícones **custom SVG** ou eliminar ícones (§6.5) |
 | Logo "?" | Substituir por logo real |
 | Link LinkedIn pessoal | Trocar por LinkedIn da empresa |
 
@@ -523,9 +662,10 @@ Do commit `e4340e8` (site estático original), recuperar e reescrever:
 ## 14. Próximo passo imediato
 
 1. Validar este plano com o time (ajustar serviços, tom, prioridades)
-2. Iniciar **Fase 0**: brand book + wireframes + setup Next.js
-3. Primeira entrega visível: **Home + 1 serviço + Contato** em deploy preview
+2. Revisar §6.1–6.7 e escolher direção visual (Orenda vs MOKN vs NEVERHACK como referência principal)
+3. Iniciar **Fase 0**: brand book + metáfora hero + wireframes + setup Next.js
+4. Primeira entrega visível: **Home + 1 serviço + Contato** em deploy preview — já sem anti-patterns §6.7
 
 ---
 
-*Documento criado em junho/2025. Atualizar conforme decisões do time.*
+*Documento criado em junho/2025. Atualizado em junho/2025 com benchmark Awwwards (§6.1). Revisar conforme decisões do time.*

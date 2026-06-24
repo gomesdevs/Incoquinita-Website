@@ -16,9 +16,8 @@
   --color-danger: var(--danger);
   --color-border: var(--border-color);
   --color-border-hover: var(--border-hover);
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-instrument-serif);
+  --font-body: var(--font-ibm-plex-sans);
 }
 
 :root {

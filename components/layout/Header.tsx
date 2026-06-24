@@ -15,11 +15,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg-primary/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 font-display text-lg font-bold text-accent transition-colors group-hover:bg-accent/20">
-            ?
-          </div>
-          <span className="font-display text-lg font-bold tracking-tight text-text-primary">
+        <Link href="/" className="flex items-center group">
+          <span className="font-display text-xl font-normal text-text-primary transition-colors group-hover:text-accent">
             {SITE.name}
           </span>
         </Link>
@@ -30,10 +27,10 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "px-3 py-2 text-sm font-medium transition-colors",
                 pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
-                  ? "bg-accent/10 text-accent"
-                  : "text-text-muted hover:bg-bg-tertiary hover:text-text-primary"
+                  ? "text-text-primary"
+                  : "text-text-muted hover:text-text-primary"
               )}
             >
               {link.label}
@@ -45,7 +42,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/proposta"
-            className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-background transition-colors hover:bg-accent-hover sm:inline-flex"
+            className="hidden rounded-lg border border-border px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:text-accent sm:inline-flex"
           >
             Solicitar Proposta
           </Link>
@@ -70,8 +67,8 @@ export function Header() {
                 className={cn(
                   "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                   pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
-                    ? "bg-accent/10 text-accent"
-                    : "text-text-muted hover:bg-bg-tertiary hover:text-text-primary"
+                    ? "text-text-primary"
+                    : "text-text-muted hover:text-text-primary"
                 )}
               >
                 {link.label}
@@ -80,7 +77,7 @@ export function Header() {
             <Link
               href="/proposta"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-semibold text-background transition-colors hover:bg-accent-hover"
+              className="mt-2 rounded-lg border border-border px-4 py-2.5 text-center text-sm font-medium text-text-primary transition-colors hover:border-accent hover:text-accent"
             >
               Solicitar Proposta
             </Link>

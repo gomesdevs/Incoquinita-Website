@@ -16,7 +16,10 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-1.5">
+              <span className="font-display text-2xl font-normal text-accent">
+                ?
+              </span>
               <span className="font-display text-xl font-normal text-text-primary">
                 {SITE.name}
               </span>

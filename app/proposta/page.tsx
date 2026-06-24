@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import { proposalSchema, type ProposalFormData } from "@/lib/validations";
 import { SERVICES } from "@/lib/constants";
@@ -77,9 +75,8 @@ export default function PropostaPage() {
       <Section className="pt-0">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           {submitted ? (
-            <Card className="py-12 text-center">
-              <CheckCircle className="mx-auto h-12 w-12 text-success" />
-              <h3 className="mt-4 font-display text-xl font-bold text-text-primary">
+            <div className="border border-border p-12 text-center">
+              <h3 className="font-display text-xl font-normal text-text-primary">
                 Proposta solicitada!
               </h3>
               <p className="mt-2 text-text-muted">
@@ -93,13 +90,13 @@ export default function PropostaPage() {
               >
                 Enviar outra proposta
               </Button>
-            </Card>
+            </div>
           ) : (
-            <Card>
-              <CardHeader>
-                <CardTitle>Detalhes do Engagement</CardTitle>
-              </CardHeader>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="border border-border p-8">
+              <h3 className="font-display text-xl font-normal text-text-primary">
+                Detalhes do Engagement
+              </h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-6">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Input
                     label="Nome"
@@ -131,7 +128,7 @@ export default function PropostaPage() {
                     {SERVICES.map((s) => (
                       <label
                         key={s.slug}
-                        className="flex items-center gap-2 rounded-lg border border-border p-3 text-sm transition-colors hover:border-accent/50 has-[:checked]:border-accent has-[:checked]:bg-accent/5"
+                        className="flex items-center gap-2 border border-border p-3 text-sm transition-colors hover:border-border-hover has-[:checked]:border-accent has-[:checked]:bg-accent-dim"
                       >
                         <input
                           type="checkbox"
@@ -233,10 +230,9 @@ export default function PropostaPage() {
 
                 <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? "Enviando..." : "Solicitar Proposta"}
-                  <Send className="h-4 w-4" />
                 </Button>
               </form>
-            </Card>
+            </div>
           )}
         </div>
       </Section>

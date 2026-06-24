@@ -1,6 +1,4 @@
-import { Section } from "@/components/ui/Section";
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Shield, Lock, Eye, FileCheck } from "lucide-react";
+import { Section, SectionHeader, SectionTitle } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,25 +9,21 @@ export const metadata: Metadata = {
 
 const PRACTICES = [
   {
-    icon: Lock,
     title: "Criptografia",
     description:
       "Todos os dados são criptografados em trânsito (TLS 1.3) e em repouso (AES-256). Credenciais e evidências sensíveis são armazenadas em cofres digitais com acesso restrito.",
   },
   {
-    icon: Eye,
     title: "Acesso Restrito",
     description:
       "Apenas membros da equipe diretamente envolvidos no engagement têm acesso aos dados do cliente. Controle de acesso baseado em função (RBAC) e logs de auditoria.",
   },
   {
-    icon: FileCheck,
     title: "NDA Padrão",
     description:
       "Todo engagement começa com a assinatura de Acordo de Não Divulgação (NDA). Isso protege tanto os dados do cliente quanto os resultados dos testes.",
   },
   {
-    icon: Shield,
     title: "Política de Retenção",
     description:
       "Após o engagement, dados do cliente são mantidos pelo período mínimo necessário e então removidos de forma segura. Não retemos dados além do necessário.",
@@ -42,7 +36,7 @@ export default function SegurancaPage() {
       <Section className="pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+            <h1 className="font-display text-4xl font-normal tracking-tight text-text-primary sm:text-5xl">
               Segurança de Dados
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-text-muted">
@@ -56,21 +50,15 @@ export default function SegurancaPage() {
 
       <Section className="bg-bg-secondary">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2">
-            {PRACTICES.map((p) => {
-              const Icon = p.icon;
-              return (
-                <Card key={p.title}>
-                  <CardHeader>
-                    <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <CardTitle>{p.title}</CardTitle>
-                  </CardHeader>
-                  <p className="text-sm text-text-muted">{p.description}</p>
-                </Card>
-              );
-            })}
+          <div className="grid gap-10 sm:grid-cols-2">
+            {PRACTICES.map((p) => (
+              <div key={p.title}>
+                <h3 className="font-display text-xl font-normal text-text-primary">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-sm text-text-muted">{p.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
@@ -78,7 +66,7 @@ export default function SegurancaPage() {
       <Section>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-display text-2xl font-bold text-text-primary">
+            <h2 className="font-display text-2xl font-normal text-text-primary">
               Durante o Engagement
             </h2>
             <div className="mt-4 space-y-4 text-text-muted leading-relaxed">

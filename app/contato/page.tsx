@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Send, CheckCircle, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import { contactSchema, type ContactFormData } from "@/lib/validations";
 import { SERVICES, SITE } from "@/lib/constants";
@@ -25,7 +23,6 @@ export default function ContatoPage() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // TODO: integrate with API route / Resend / SendGrid
     console.log("Contact form:", data);
     setSubmitted(true);
     reset();
@@ -49,9 +46,8 @@ export default function ContatoPage() {
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="lg:col-span-2">
               {submitted ? (
-                <Card className="py-12 text-center">
-                  <CheckCircle className="mx-auto h-12 w-12 text-success" />
-                  <h3 className="mt-4 font-display text-xl font-bold text-text-primary">
+                <div className="border border-border p-12 text-center">
+                  <h3 className="font-display text-xl font-normal text-text-primary">
                     Mensagem enviada!
                   </h3>
                   <p className="mt-2 text-text-muted">
@@ -64,13 +60,13 @@ export default function ContatoPage() {
                   >
                     Enviar outra mensagem
                   </Button>
-                </Card>
+                </div>
               ) : (
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Formulário de Contato</CardTitle>
-                  </CardHeader>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="border border-border p-8">
+                  <h3 className="font-display text-xl font-normal text-text-primary">
+                    Formulário de Contato
+                  </h3>
+                  <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <Input
                         label="Nome"
@@ -119,49 +115,42 @@ export default function ContatoPage() {
                     />
                     <Button type="submit" size="lg" disabled={isSubmitting}>
                       {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-                      <Send className="h-4 w-4" />
                     </Button>
                   </form>
-                </Card>
+                </div>
               )}
             </div>
 
             <div className="space-y-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Canais</CardTitle>
-                </CardHeader>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                    <div>
-                      <p className="text-sm font-medium text-text-primary">E-mail</p>
-                      <a
-                        href={`mailto:${SITE.email}`}
-                        className="text-sm text-text-muted hover:text-accent"
-                      >
-                        {SITE.email}
-                      </a>
-                    </div>
+              <div className="border border-border p-6">
+                <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
+                  Canais
+                </h3>
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <p className="text-sm font-medium text-text-primary">E-mail</p>
+                    <a
+                      href={`mailto:${SITE.email}`}
+                      className="text-sm text-text-muted hover:text-text-primary"
+                    >
+                      {SITE.email}
+                    </a>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                    <div>
-                      <p className="text-sm font-medium text-text-primary">Localização</p>
-                      <p className="text-sm text-text-muted">Brasil</p>
-                    </div>
+                  <div>
+                    <p className="text-sm font-medium text-text-primary">Localização</p>
+                    <p className="text-sm text-text-muted">Brasil</p>
                   </div>
                 </div>
-              </Card>
+              </div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Horário de Atendimento</CardTitle>
-                </CardHeader>
-                <p className="text-sm text-text-muted">
+              <div className="border border-border p-6">
+                <h3 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-text-muted">
+                  Horário de Atendimento
+                </h3>
+                <p className="mt-4 text-sm text-text-muted">
                   Segunda a sexta, das 9h às 18h (horário de Brasília).
                 </p>
-              </Card>
+              </div>
             </div>
           </div>
         </div>

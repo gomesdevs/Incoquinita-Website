@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import type { Metadata } from "next";

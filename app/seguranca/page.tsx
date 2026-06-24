@@ -1,4 +1,4 @@
-import { Section, SectionHeader, SectionTitle } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

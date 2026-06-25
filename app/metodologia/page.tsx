@@ -1,5 +1,6 @@
 import { METHODOLOGY_STEPS } from "@/lib/constants";
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
+import { StackingCards } from "@/components/creative/StackingCards";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -52,31 +53,34 @@ export default function MetodologiaPage() {
               Do primeiro contato ao retest — cada fase tem objetivos claros e entregáveis definidos.
             </SectionDescription>
           </SectionHeader>
-
-          <div className="mt-16 space-y-0">
-            {METHODOLOGY_STEPS.map((step) => (
-              <div
-                key={step.number}
-                className="border-b border-border py-8 last:border-b-0"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-bg-primary font-body text-xs font-medium text-text-muted">
-                    {step.number}
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-normal text-text-primary">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 text-text-muted leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </Section>
+
+      <StackingCards>
+        {METHODOLOGY_STEPS.map((step) => (
+          <div
+            key={step.number}
+            data-stack-card
+            className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 lg:px-8"
+          >
+            <div className="mx-auto max-w-3xl border border-border bg-bg-primary p-8 sm:p-12">
+              <div className="flex items-start gap-6">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-border font-body text-sm font-medium text-text-muted">
+                  {step.number}
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-normal text-text-primary sm:text-3xl">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-text-muted">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </StackingCards>
 
       <Section>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

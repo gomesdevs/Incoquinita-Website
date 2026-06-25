@@ -107,3 +107,36 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes glitch-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(1px, -2px); }
+}
+
+.glitch {
+  position: relative;
+  animation: glitch-shift 400ms ease-in-out 2;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--accent);
+  animation: glitch-shift 400ms ease-in-out 2;
+  mix-blend-mode: screen;
+}
+
+.glitch::after {
+  color: var(--accent-hover);
+  animation: glitch-shift 400ms ease-in-out 2 reverse;
+  mix-blend-mode: screen;
+}

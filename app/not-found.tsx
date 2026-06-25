@@ -7,7 +7,10 @@ export default function NotFound() {
     <section className="flex min-h-[70vh] flex-col items-center justify-center px-4 text-center">
       <div className="relative">
         <QuestionMarkFallback size={160} className="opacity-15" />
-        <span className="absolute inset-0 flex items-center justify-center font-display text-6xl font-normal text-text-primary sm:text-8xl">
+        <span
+          data-text="404"
+          className="glitch absolute inset-0 flex items-center justify-center font-display text-6xl font-normal text-text-primary sm:text-8xl"
+        >
           404
         </span>
       </div>

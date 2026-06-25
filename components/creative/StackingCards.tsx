@@ -29,28 +29,42 @@ export function StackingCards({ children }: StackingCardsProps) {
     );
     if (cards.length < 2) return;
 
-    // Pin the container, stack cards on top of each other
+    // Initial state: only the first card is visible
+    cards.forEach((card, i) => {
+      gsap.set(card, {
+        opacity: i === 0 ? 1 : 0,
+        scale: i === 0 ? 1 : 0.95,
+      });
+    });
+
+    // Pin the container; scroll distance = (n-1) segments
+    // so each segment transitions from card N to card N+1.
     const trigger = ScrollTrigger.create({
       trigger: container,
       start: "top top",
-      end: () => `+=${cards.length * 100}%`,
+      end: () => `+=${(cards.length - 1) * 100}%`,
       pin: true,
     });
 
-    // Animate each card: scale down + fade as next card comes in
-    cards.forEach((card, i) => {
-      if (i === cards.length - 1) return; // last card stays
-      gsap.to(card, {
-        scale: 0.92,
-        opacity: 0.4,
+    // For each transition (card N → card N+1):
+    // fade out card N, fade in card N+1
+    for (let i = 0; i < cards.length - 1; i++) {
+      const outgoing = cards[i];
+      const incoming = cards[i + 1];
+      const segmentStart = i * 100;
+      const segmentEnd = (i + 1) * 100;
+
+      gsap.timeline({
         scrollTrigger: {
           trigger: container,
-          start: () => `top+=${i * 100}% top`,
-          end: () => `top+=${(i + 1) * 100}% top`,
+          start: () => `top+=${segmentStart}% top`,
+          end: () => `top+=${segmentEnd}% top`,
           scrub: true,
         },
-      });
-    });
+      })
+        .to(outgoing, { opacity: 0, scale: 0.95, ease: "none" }, 0)
+        .to(incoming, { opacity: 1, scale: 1, ease: "none" }, 0);
+    }
 
     return () => {
       trigger.kill();

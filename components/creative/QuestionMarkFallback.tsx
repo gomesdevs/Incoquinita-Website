@@ -47,15 +47,43 @@ export function QuestionMarkFallback({
               />
             </stop>
           </linearGradient>
+          <mask id="qmark-text-mask">
+            <rect width="100" height="140" fill="black" />
+            <text
+              x="50"
+              y="105"
+              textAnchor="middle"
+              fontSize="120"
+              fontFamily="var(--font-instrument-serif), Georgia, serif"
+              fontWeight="400"
+              fill="white"
+            >
+              ?
+            </text>
+          </mask>
         </defs>
       )}
 
-      {/* Main ? shape — SVG path */}
-      <path
-        d="M45 10 C20 10, 5 30, 5 50 C5 70, 20 80, 35 85 L35 95 L55 95 L55 85 C70 82, 90 72, 90 50 C90 28, 72 10, 45 10 Z M35 68 L55 68 L55 48 L35 48 Z M35 108 L55 108 L55 128 L35 128 Z"
-        fill={animated ? "url(#qmark-scan)" : "var(--accent)"}
-        className="transition-colors duration-500"
-      />
+      {animated ? (
+        <rect
+          width="100"
+          height="140"
+          fill="url(#qmark-scan)"
+          mask="url(#qmark-text-mask)"
+        />
+      ) : (
+        <text
+          x="50"
+          y="105"
+          textAnchor="middle"
+          fontSize="120"
+          fontFamily="var(--font-instrument-serif), Georgia, serif"
+          fontWeight="400"
+          fill="var(--accent)"
+        >
+          ?
+        </text>
+      )}
     </svg>
   );
 }

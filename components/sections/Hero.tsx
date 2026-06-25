@@ -79,7 +79,23 @@ export function Hero() {
             </div>
           </div>
 
-          {/* 3D Slot — right side, 50% */}
+          {/* Mobile: animated ? above text (no WebGL) */}
+          <div
+            className={`flex justify-center lg:hidden transition-all duration-1000 ease-out delay-300 ${
+              revealed
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
+            }`}
+            aria-hidden="true"
+          >
+            <QuestionMarkFallback
+              size={140}
+              animated
+              className="opacity-40"
+            />
+          </div>
+
+          {/* Desktop: 3D Canvas */}
           <div
             className={`hidden lg:block transition-all duration-1200 ease-out delay-500 ${
               revealed

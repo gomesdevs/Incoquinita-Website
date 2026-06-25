@@ -18,6 +18,9 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://incoquinita.com.br"
+  ),
   title: {
     default: "Incoquinita — Consultoria em Cibersegurança",
     template: "%s | Incoquinita",
@@ -44,6 +47,14 @@ export const metadata: Metadata = {
     title: "Incoquinita — Consultoria em Cibersegurança",
     description:
       "Iluminamos o que você não vê no seu ambiente digital.",
+    images: [
+      {
+        url: "/og/default.png",
+        width: 1200,
+        height: 630,
+        alt: "Incoquinita — Consultoria em Cibersegurança",
+      },
+    ],
   },
 };
 

@@ -1,12 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useRef, useEffect, Children } from "react";
 
 interface StackingCardsProps {
   children: React.ReactNode;
@@ -14,78 +8,69 @@ interface StackingCardsProps {
 
 export function StackingCards({ children }: StackingCardsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardCount = Children.count(children);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
+    const el = containerRef.current;
+    if (!el) return;
 
     const cards = Array.from(
-      container.querySelectorAll<HTMLElement>("[data-stack-card]")
+      el.querySelectorAll<HTMLElement>("[data-stack-card]")
     );
     if (cards.length < 2) return;
 
-    // Each card transition = 1 viewport height of scroll.
-    const segmentVh = window.innerHeight;
+    const totalScroll = el.offsetHeight - window.innerHeight;
+    const steps = cards.length - 1;
 
-    // Initial state: only the first card is visible
-    cards.forEach((card, i) => {
-      gsap.set(card, {
-        opacity: i === 0 ? 1 : 0,
-        scale: i === 0 ? 1 : 0.95,
-      });
-    });
+    function onScroll() {
+      const el2 = containerRef.current;
+      if (!el2) return;
+      const rect = el2.getBoundingClientRect();
+      const scrolled = Math.max(0, -rect.top);
+      const progress = Math.min(1, scrolled / totalScroll);
 
-    // Pin the container; total pin distance = (n-1) viewports
-    const trigger = ScrollTrigger.create({
-      trigger: container,
-      start: "top top",
-      end: () => `+=${(cards.length - 1) * segmentVh}`,
-      pin: true,
-      pinSpacing: true,
-      anticipatePin: 1,
-    });
+      const exactIndex = progress * steps;
+      const currentCard = Math.floor(exactIndex);
+      const frac = exactIndex - currentCard;
 
-    // For each transition (card N → card N+1):
-    // smooth crossfade with slight lerp via scrub value.
-    for (let i = 0; i < cards.length - 1; i++) {
-      const outgoing = cards[i];
-      const incoming = cards[i + 1];
-      const startScroll = i * segmentVh;
-      const endScroll = (i + 1) * segmentVh;
+      for (let i = 0; i < cards.length; i++) {
+        let opacity: number;
+        let scale: number;
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: () => `top+=${startScroll} top`,
-          end: () => `top+=${endScroll} top`,
-          scrub: 0.4,
-          fastScrollEnd: true,
-        },
-      })
-        .to(outgoing, { opacity: 0, scale: 0.95, ease: "none" }, 0)
-        .to(incoming, { opacity: 1, scale: 1, ease: "none" }, 0);
+        if (i < currentCard) {
+          opacity = 0.3;
+          scale = 0.95;
+        } else if (i === currentCard) {
+          opacity = 1 - frac * 0.7;
+          scale = 1 - frac * 0.05;
+        } else if (i === currentCard + 1) {
+          opacity = frac;
+          scale = 0.95 + frac * 0.05;
+        } else {
+          opacity = 0;
+          scale = 0.95;
+        }
+
+        cards[i].style.opacity = String(opacity);
+        cards[i].style.transform = `scale(${scale})`;
+      }
     }
 
-    return () => {
-      trigger.kill();
-      ScrollTrigger.getAll().forEach((t) => {
-        if (t.trigger === container) t.kill();
-      });
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <div
       ref={containerRef}
       className="relative w-full"
-      style={{ height: "100vh" }}
+      style={{ height: `${cardCount * 100}vh` }}
     >
-      {children}
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {children}
+      </div>
     </div>
   );
 }

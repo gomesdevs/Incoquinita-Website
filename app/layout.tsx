@@ -3,6 +3,7 @@ import { Instrument_Serif, IBM_Plex_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { IntroTransition } from "@/components/creative/IntroTransition";
+import "@/lib/suppress-three-warnings";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({

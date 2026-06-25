@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { QuestionMarkFallback } from "@/components/creative/QuestionMarkFallback";
 import { SITE } from "@/lib/constants";
+import { useIntroPhase } from "@/lib/use-intro-phase";
 
 const QuestionMark3D = dynamic(
   () =>
@@ -24,11 +25,14 @@ const QuestionMark3D = dynamic(
 
 export function Hero() {
   const [revealed, setRevealed] = useState(false);
+  const introPhase = useIntroPhase();
+  const introComplete = introPhase === "content";
 
   useEffect(() => {
-    const timer = setTimeout(() => setRevealed(true), 300);
+    if (!introComplete) return;
+    const timer = setTimeout(() => setRevealed(true), 100);
     return () => clearTimeout(timer);
-  }, []);
+  }, [introComplete]);
 
   return (
     <section className="relative overflow-hidden bg-bg-primary">

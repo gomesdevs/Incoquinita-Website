@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Artigos técnicos sobre cibersegurança, pentest, cloud assessment e mais.",
+  openGraph: {
+    title: "Blog — Incoquinita",
+    description:
+      "Conhecimento técnico e bastidores.",
+    images: ["/og/blog.png"],
+  },
 };
 
 const POSTS = [

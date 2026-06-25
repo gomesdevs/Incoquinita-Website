@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Recursos",
   description:
     "Whitepapers, checklists e guias gratuitos para melhorar a segurança da sua empresa.",
+  openGraph: {
+    title: "Recursos — Incoquinita",
+    description:
+      "Materiais gratuitos de segurança.",
+    images: ["/og/recursos.png"],
+  },
 };
 
 const RESOURCES = [

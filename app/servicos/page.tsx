@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Serviços",
   description:
     "Conheça nossos serviços de cibersegurança: pentest, cloud assessment, segurança wireless e mais.",
+  openGraph: {
+    title: "Serviços — Incoquinita",
+    description:
+      "Pentest, cloud assessment, segurança wireless e mais.",
+    images: ["/og/servicos.png"],
+  },
 };
 
 export default function ServicosPage() {

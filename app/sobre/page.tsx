@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   title: "Sobre",
   description:
     "Conheça a Incoquinita: nossa história, missão e valores em cibersegurança.",
+  openGraph: {
+    title: "Sobre — Incoquinita",
+    description:
+      "Quem somos e como trabalhamos.",
+    images: ["/og/sobre.png"],
+  },
 };
 
 const VALUES = [

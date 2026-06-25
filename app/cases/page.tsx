@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Cases",
   description:
     "Estudos de caso anonimizados demonstrando nossos resultados em cibersegurança.",
+  openGraph: {
+    title: "Cases — Incoquinita",
+    description:
+      "Resultados que entregam valor real.",
+    images: ["/og/cases.png"],
+  },
 };
 
 const CASES = [

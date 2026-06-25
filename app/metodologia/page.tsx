@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Metodologia",
   description:
     "Como trabalhamos: scoping, execução, relatório, debrief e retest — um processo claro e transparente.",
+  openGraph: {
+    title: "Metodologia — Incoquinita",
+    description:
+      "Processo claro e transparente do início ao fim.",
+    images: ["/og/metodologia.png"],
+  },
 };
 
 const FRAMEWORKS = [

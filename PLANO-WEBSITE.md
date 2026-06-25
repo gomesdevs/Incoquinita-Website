@@ -320,7 +320,7 @@ Metáforas visuais **proprietárias** a explorar na Fase 0 (escolher **uma** e e
 | **Reveal / máscara** | Orenda (mask transition) | Incógnita sendo “iluminada” — áreas ocultas reveladas no scroll ou hover |
 | **Camadas** | CyberConvoy (security layers) | Superfícies de ataque em camadas empilhadas, interativas |
 | **Luz sobre o escuro** | NEVERHACK (3D hero) | Objeto 3D ou ilustração com feixe de luz — **não** radar 2D canvas |
-| **Objeto simbólico** | MOKN (3D bait) | Símbolo da incógnita (interrogação estilizada, lente, prisma) — desenhado, não emoji “?” |
+| **Objeto simbólico** | MOKN (3D bait) | **`?` é a marca** — interrogação como glifo de marca em 3D/tipografia, protagonista do intro e do hero. Não é placeholder, é símbolo de "iluminar o que você não vê" |
 
 **Evitar:** mapas de rede genéricos, scan/radar canvas, partículas conectadas, matrix green, terminal falso, cadeados stock.
 
@@ -401,12 +401,15 @@ Priorizar **poucas interações memoráveis** sobre micro-animações em tudo.
 
 | Interação | Prioridade | Referência |
 |---|---|---|
-| **Page transitions** (View Transitions API) | Alta | NEVERHACK, Orenda |
+| **Intro de entrada** (click/Enter, fullscreen `?` → FLIP para header) | **Alta** | CyberConvoy, SEQRYPTON |
+| **Objeto 3D de marca** (`?` extrudado, scan animado) | **Alta** | NEVERHACK, MOKN |
+| **Page transitions** (View Transitions API ou CSS) | Alta | NEVERHACK, Orenda |
 | **Reveal no scroll** (máscara, clip-path, opacity) | Alta | Orenda, SEQRYPTON |
 | **Scroll storytelling** (cards empilhados, sticky) | Média | NEVERHACK, CyberConvoy |
-| **Intro de carga** (tipografia → logo) | Média | CyberConvoy, SEQRYPTON |
 | **Calculadora / quiz interativo** | Alta (conversão) | Dispel (ROI), §8 Opção A/B |
 | Canvas radar / partículas | **Remover** | Clichê — substituir por metáfora §6.2 |
+
+**Spec detalhada:** ver [`PLANO-ACAO-CREATIVE.md`](./PLANO-ACAO-CREATIVE.md) e [`CREATIVE-DEVELOPMENT.md`](./CREATIVE-DEVELOPMENT.md).
 
 Stack motion sugerida:
 - **GSAP + ScrollTrigger** ou **Framer Motion** — usar onde há narrativa; não instalar e deixar ocioso
@@ -420,7 +423,7 @@ Antes de mergear qualquer componente visual, validar:
 
 - [ ] Paleta tem ≤ 3 cores de marca (+ tokens funcionais)?
 - [ ] Hero usa metáfora proprietária, não canvas genérico?
-- [ ] Logo real, não placeholder?
+- [ ] **`?` é marca intencional** (intro, 3D hero, header lockup) — não caixinha `bg-accent/10` genérica
 - [ ] Fonte display **não** é Space Grotesk/Inter combo default?
 - [ ] Ícones são custom ou ausentes — não grid Lucide repetido?
 - [ ] Motion tem propósito narrativo (≤ 3 momentos memoráveis por página)?

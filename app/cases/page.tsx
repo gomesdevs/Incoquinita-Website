@@ -1,4 +1,5 @@
 import { Section } from "@/components/ui/Section";
+import { MaskReveal } from "@/components/creative/MaskReveal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -75,7 +76,8 @@ export default function CasesPage() {
       <Section className="pt-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           {CASES.map((c) => (
-            <div key={c.title} className="border border-border p-8">
+            <MaskReveal key={c.title}>
+              <div className="border border-border p-8">
               <div className="flex items-baseline gap-3 mb-6">
                 <span className="text-xs font-medium text-accent">{c.sector}</span>
                 <h2 className="font-display text-2xl font-normal text-text-primary">
@@ -121,7 +123,8 @@ export default function CasesPage() {
                   </div>
                 ))}
               </div>
-            </div>
+              </div>
+            </MaskReveal>
           ))}
         </div>
       </Section>

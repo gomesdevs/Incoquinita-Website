@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, IBM_Plex_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { IntroTransition } from "@/components/creative/IntroTransition";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -82,6 +83,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <IntroTransition />
       </body>
     </html>
   );

@@ -2,30 +2,31 @@
 
 import { useSyncExternalStore, useCallback } from "react";
 import { SiteIntro } from "./SiteIntro";
+import {
+  dispatchIntroComplete,
+  getIntroPhase,
+  setIntroPhase,
+  subscribeToIntroPhase,
+  type IntroPhase,
+} from "@/lib/intro";
 
 const STORAGE_KEY = "intro-seen";
-const EVENT_NAME = "intro-seen";
 
-// Snapshots: identical on server and client → no hydration mismatch
-function getServerSnapshot() {
-  return "content" as const;
+function getServerSnapshot(): IntroPhase {
+  return "content";
 }
 
-function getBrowserSnapshot() {
+function getInitialSnapshot(): IntroPhase {
+  if (typeof window === "undefined") return "content";
+
   const prefersReduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  if (prefersReduced) return "content" as const;
+  if (prefersReduced) return "content";
 
   const seen = sessionStorage.getItem(STORAGE_KEY);
-  return seen === "1" ? ("content" as const) : ("intro" as const);
-}
-
-// Subscribe to custom event fired when intro is dismissed
-function subscribeToPhase(callback: () => void) {
-  window.addEventListener(EVENT_NAME, callback);
-  return () => window.removeEventListener(EVENT_NAME, callback);
+  return seen === "1" ? "content" : "intro";
 }
 
 interface HomeExperienceProps {
@@ -33,15 +34,31 @@ interface HomeExperienceProps {
 }
 
 export function HomeExperience({ children }: HomeExperienceProps) {
-  const phase = useSyncExternalStore(
-    subscribeToPhase,
-    getBrowserSnapshot,
+  // Initial render: check storage (server returns "content" for hydration safety)
+  const initialPhase = useSyncExternalStore(
+    subscribeToIntroPhase,
+    getInitialSnapshot,
     getServerSnapshot
   );
 
+  // Live phase from shared store (DOM attribute)
+  const livePhase = useSyncExternalStore(
+    subscribeToIntroPhase,
+    getIntroPhase,
+    getServerSnapshot
+  );
+
+  // Sync store with initial phase on first client render
+  // This is a DOM write (not setState), safe in render
+  if (typeof window !== "undefined" && livePhase !== initialPhase) {
+    setIntroPhase(initialPhase);
+  }
+
+  const phase = initialPhase;
+
   const handleIntroComplete = useCallback(() => {
     sessionStorage.setItem(STORAGE_KEY, "1");
-    window.dispatchEvent(new Event(EVENT_NAME));
+    dispatchIntroComplete();
   }, []);
 
   return (

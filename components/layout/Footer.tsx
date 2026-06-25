@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/constants";
+import { useIntroPhase } from "@/lib/use-intro-phase";
+import { cn } from "@/lib/utils";
 
 const LEGAL_LINKS = [
   { label: "Privacidade", href: "/privacidade" },
@@ -10,9 +14,17 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const introPhase = useIntroPhase();
+  const hidden = introPhase === "intro";
 
   return (
-    <footer className="border-t border-border bg-bg-secondary">
+    <footer
+      className={cn(
+        "border-t border-border bg-bg-secondary transition-opacity duration-500",
+        hidden ? "pointer-events-none opacity-0" : "opacity-100"
+      )}
+      aria-hidden={hidden}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">

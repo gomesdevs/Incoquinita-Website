@@ -1,4 +1,5 @@
 import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/Section";
+import { ScopeCalculator } from "@/components/interactive/ScopeCalculator";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -77,6 +78,12 @@ export default function RecursosPage() {
               </div>
             ))}
           </div>
+        </div>
+      </Section>
+
+      <Section className="bg-bg-secondary">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <ScopeCalculator />
         </div>
       </Section>
     </>

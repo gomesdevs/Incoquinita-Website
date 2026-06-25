@@ -29,6 +29,9 @@ export function StackingCards({ children }: StackingCardsProps) {
     );
     if (cards.length < 2) return;
 
+    // Each card transition = 1 viewport height of scroll.
+    const segmentVh = window.innerHeight;
+
     // Initial state: only the first card is visible
     cards.forEach((card, i) => {
       gsap.set(card, {
@@ -37,13 +40,13 @@ export function StackingCards({ children }: StackingCardsProps) {
       });
     });
 
-    // Pin the container; scroll distance = (n-1) segments
-    // so each segment transitions from card N to card N+1.
+    // Pin the container; total pin distance = (n-1) viewports
     const trigger = ScrollTrigger.create({
       trigger: container,
       start: "top top",
-      end: () => `+=${(cards.length - 1) * 100}%`,
+      end: () => `+=${(cards.length - 1) * segmentVh}`,
       pin: true,
+      pinSpacing: true,
     });
 
     // For each transition (card N → card N+1):
@@ -51,14 +54,14 @@ export function StackingCards({ children }: StackingCardsProps) {
     for (let i = 0; i < cards.length - 1; i++) {
       const outgoing = cards[i];
       const incoming = cards[i + 1];
-      const segmentStart = i * 100;
-      const segmentEnd = (i + 1) * 100;
+      const startScroll = i * segmentVh;
+      const endScroll = (i + 1) * segmentVh;
 
       gsap.timeline({
         scrollTrigger: {
           trigger: container,
-          start: () => `top+=${segmentStart}% top`,
-          end: () => `top+=${segmentEnd}% top`,
+          start: () => `top+=${startScroll} top`,
+          end: () => `top+=${endScroll} top`,
           scrub: true,
         },
       })
@@ -75,7 +78,7 @@ export function StackingCards({ children }: StackingCardsProps) {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-screen w-full">
+    <div ref={containerRef} className="relative w-full" style={{ height: "100vh" }}>
       {children}
     </div>
   );

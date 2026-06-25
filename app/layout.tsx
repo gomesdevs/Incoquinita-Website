@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     "Incoquinita",
   ],
   authors: [{ name: "Incoquinita" }],
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",

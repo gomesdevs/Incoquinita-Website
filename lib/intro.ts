@@ -4,18 +4,44 @@ export const INTRO_COMPLETE_EVENT = "intro-complete";
 
 export type IntroPhase = "intro" | "content";
 
-function getPhase(): IntroPhase {
-  if (typeof document === "undefined") return "content";
-  return document.documentElement.dataset.introPhase === "intro" ? "intro" : "content";
+const STORAGE_KEY = "intro-seen";
+
+let initialized = false;
+let currentPhase: IntroPhase = "content";
+const subscribers = new Set<() => void>();
+
+function notify() {
+  for (const cb of subscribers) cb();
+}
+
+function readPhaseFromStorage(): IntroPhase {
+  if (typeof window === "undefined") return "content";
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  if (prefersReduced) return "content";
+  return sessionStorage.getItem(STORAGE_KEY) === "1" ? "content" : "intro";
 }
 
 function setPhase(phase: IntroPhase) {
-  if (typeof document === "undefined") return;
-  if (document.documentElement.dataset.introPhase === phase) return;
-  document.documentElement.dataset.introPhase = phase;
+  if (typeof window === "undefined") return;
+  if (currentPhase === phase) return;
+  currentPhase = phase;
   window.dispatchEvent(
     new CustomEvent(INTRO_PHASE_EVENT, { detail: { phase } })
   );
+  if (phase === "content") {
+    window.dispatchEvent(new Event(INTRO_SEEN_EVENT));
+  }
+  notify();
+}
+
+export function getIntroPhase(): IntroPhase {
+  if (!initialized && typeof window !== "undefined") {
+    currentPhase = readPhaseFromStorage();
+    initialized = true;
+  }
+  return currentPhase;
 }
 
 export function setIntroPhase(phase: IntroPhase) {
@@ -25,16 +51,12 @@ export function setIntroPhase(phase: IntroPhase) {
 export function dispatchIntroComplete() {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new Event(INTRO_COMPLETE_EVENT));
-  window.dispatchEvent(new Event(INTRO_SEEN_EVENT));
   setPhase("content");
 }
 
-export function getIntroPhase(): IntroPhase {
-  return getPhase();
-}
-
 export function subscribeToIntroPhase(callback: () => void): () => void {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener(INTRO_PHASE_EVENT, callback);
-  return () => window.removeEventListener(INTRO_PHASE_EVENT, callback);
+  subscribers.add(callback);
+  return () => {
+    subscribers.delete(callback);
+  };
 }

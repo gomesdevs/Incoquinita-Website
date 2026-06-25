@@ -47,10 +47,11 @@ export function StackingCards({ children }: StackingCardsProps) {
       end: () => `+=${(cards.length - 1) * segmentVh}`,
       pin: true,
       pinSpacing: true,
+      anticipatePin: 1,
     });
 
     // For each transition (card N → card N+1):
-    // fade out card N, fade in card N+1
+    // smooth crossfade with slight lerp via scrub value.
     for (let i = 0; i < cards.length - 1; i++) {
       const outgoing = cards[i];
       const incoming = cards[i + 1];
@@ -62,7 +63,8 @@ export function StackingCards({ children }: StackingCardsProps) {
           trigger: container,
           start: () => `top+=${startScroll} top`,
           end: () => `top+=${endScroll} top`,
-          scrub: true,
+          scrub: 0.4,
+          fastScrollEnd: true,
         },
       })
         .to(outgoing, { opacity: 0, scale: 0.95, ease: "none" }, 0)
@@ -78,7 +80,11 @@ export function StackingCards({ children }: StackingCardsProps) {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full" style={{ height: "100vh" }}>
+    <div
+      ref={containerRef}
+      className="relative w-full"
+      style={{ height: "100vh" }}
+    >
       {children}
     </div>
   );
